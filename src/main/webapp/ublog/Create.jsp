@@ -13,14 +13,7 @@
 	(Hint: You need to handle NullPointerException.)
 	(Hint: Make use of the email id stored in the session object to check if user is logged in or not.)
 -->
- <%
-        try{
-            Boolean isError = (Boolean) request.getAttribute("isError");
-            if(isError){
-            out.println(request.getAttribute("isError"));
-            }
-        } catch(NullPointerException ignore) {}
-    %>
+
 <!--
 	TODO: 4.16. Design the "Create Post" page with the following properties.
 	    1. Title of the page should be "Create Post"

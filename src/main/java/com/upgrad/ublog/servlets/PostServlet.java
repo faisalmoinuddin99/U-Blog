@@ -40,6 +40,12 @@ package com.upgrad.ublog.servlets;
  *  Print the "System.getProperty("user.dir")" to know where the log file is created.
  */
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
  * TODO 9.1: Modify the existing code such that the following two operations occur simultaneously on
  *  two independent threads.
@@ -47,6 +53,40 @@ package com.upgrad.ublog.servlets;
  *  thread2: Writing logs into the file
  */
 
-public class PostServlet  {
+public class PostServlet extends HttpServlet {
 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        String actionType = req.getParameter("actionType");
+        String emailID = req.getParameter("email");
+        String title = req.getParameter("bTitle");
+        String tag = req.getParameter("bTag");
+        String Description = req.getParameter("bDiscription");
+
+
+        switch (actionType) {
+            case "Sign In":
+                try {
+//                    accountService.login(account)
+                    req.getSession().setAttribute("isLoggedIn", true);
+                    req.getSession().setAttribute("email", emailID);
+                    req.getSession().setAttribute("bTitle", title);
+                    req.getSession().setAttribute("bTag", tag);
+                    req.getSession().setAttribute("bDiscription", Description);
+                    req.getRequestDispatcher("/View.jsp").forward(req, res);
+
+                } catch (Exception e) {
+                    req.setAttribute("isError", true);
+                    req.setAttribute("error", e.getMessage());
+                    req.getRequestDispatcher("/index.jsp").forward(req, res);
+                }
+                break;
+
+            default:
+                System.out.println("No such action type");
+                break;
+
+        }
+    }
 }

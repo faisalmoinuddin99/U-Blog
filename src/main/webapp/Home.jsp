@@ -13,18 +13,7 @@
 	(Hint: You need to handle NullPointerException.)
 	(Hint: Make use of the email id stored in the session object to check if user is logged in or not.)
 -->
-<%
-  try{
-        Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-        if(!isLoggedIn){
-            response.sendRedirect("/index.jsp");
-        }
-  }catch(NullPointerException ne){
-       response.sendRedirect("/index.jsp");
-  }
 
-
-%>
 
 <!--
 	TODO: 4.14. Design the "Home" page with the following properties.
@@ -54,5 +43,7 @@
 
         <br>
         <a href="/ublog/Logout.jsp">Logout</a>
+
+
     </body>
 </html>

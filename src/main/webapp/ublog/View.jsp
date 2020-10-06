@@ -32,3 +32,17 @@
         4. Provide a link to the "Home Page".
         5. You also need to handle "NullPointerException".
 -->
+<html>
+    <head>
+        <title>View Post After Creation</title>
+    </head>
+
+    <body>
+
+       Logged In as <%= session.getAttribute("email") %>
+        <br><br>
+       Email Id: <%= session.getAttribute("email") %>
+       Title: <%= session.getAttribute("bTitle") %>
+
+    </body>
+</html>

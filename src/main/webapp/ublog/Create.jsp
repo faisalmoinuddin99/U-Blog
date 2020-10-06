@@ -13,7 +13,14 @@
 	(Hint: You need to handle NullPointerException.)
 	(Hint: Make use of the email id stored in the session object to check if user is logged in or not.)
 -->
-
+ <%
+        try{
+            Boolean isError = (Boolean) request.getAttribute("isError");
+            if(isError){
+            out.println(request.getAttribute("isError"));
+            }
+        } catch(NullPointerException ignore) {}
+    %>
 <!--
 	TODO: 4.16. Design the "Create Post" page with the following properties.
 	    1. Title of the page should be "Create Post"
@@ -34,6 +41,41 @@
         11. Provide "Post" submit button.
         12. Provide a link to the "Home Page".
 -->
+
+<html>
+    <head>
+        <title> Create Post </title>
+    </head>
+<body>
+    <form method="POST" action="/ublog/post">
+        <table>
+            <tr>
+                 <td> User Email: <%= session.getAttribute("email") %></td>
+            </tr>
+            <tr>
+                <td><label for="bTitle">Blog Title:</label></td>
+                <td><input type = "text"  maxlength="200" placeholder="Title" required name="bTitle" id="bTitle"> </input></td>
+
+            </tr>
+            <tr>
+             <td><label for="bTag">Blog Tag:</label></td>
+             <td><input type = "text" maxlength="10" placeholder="Java" required name="bTag" id="bTag"> </input></td>
+             </tr>
+             <tr>
+             <td><label for="bDiscription">Blog Discription:</label></td>
+             <td><textarea id="bDiscription" placeholder="Post Description" name="bDiscription" rows="15" cols="75"></textarea></td>
+             </tr>
+        </table>
+
+        <input type="submit" value="Post" name="actionType"/>
+        <button type="submit"><a href="/Home.jsp">Home Page</a></button>
+
+   </form>
+
+
+
+</body>
+</html>
 
 <!--
     TODO: 4.17. If the user is logged in then display the string before @ in the user email id

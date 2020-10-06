@@ -1,5 +1,12 @@
 package com.upgrad.ublog.servlets;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;	import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;	import java.io.IOException;
+import java.util.Enumeration;
+
 /**
  * TODO: 4.5. Modify the class definition to make it a Servlet class (through inheritance) and
  *  override doPost() method from the base class.
@@ -53,6 +60,50 @@ package com.upgrad.ublog.servlets;
  *   message stored in the exception object and display the same message on the index.jsp page.
  */
 
-public class UserServlet {
+public class UserServlet  extends HttpServlet {
 
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        res.getWriter().println("Learn @ upgrad");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String actionType = req.getParameter("actionType");
+        String emailID = req.getParameter("email");
+        String password = req.getParameter("password");
+
+        switch (actionType){
+            case "Sign In":
+                try{
+//                    accountService.login(account)
+                    req.getSession().setAttribute("isLoggedIn",true);
+                    req.getSession().setAttribute("email",emailID);
+                    req.getRequestDispatcher("/Home.jsp").forward(req,res);
+
+                } catch (Exception e){
+                    req.setAttribute("isError", true);
+                    req.setAttribute("error", e.getMessage());
+                    req.getRequestDispatcher("/index.jsp").forward(req,res);
+                }
+                break;
+
+            case "Sign Up":
+                try{
+//                    accountService.register(account)
+                    req.getSession().setAttribute("isLoggedIn",true);
+                    req.getSession().setAttribute("email",emailID);
+                    req.getRequestDispatcher("/Home.jsp").forward(req,res);
+                } catch (Exception e){
+                    req.setAttribute("isError", true);
+                    req.setAttribute("error", e.getMessage());
+                    req.getRequestDispatcher("/index.jsp").forward(req,res);
+                }
+                break;
+            default:
+                System.out.println("No such action type");
+                break;
+        }
+    }
 }

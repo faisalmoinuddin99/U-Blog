@@ -47,6 +47,6 @@ package com.upgrad.ublog.servlets;
  *  thread2: Writing logs into the file
  */
 
-public class PostServlet {
+public class PostServlet  {
 
 }

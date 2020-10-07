@@ -51,6 +51,14 @@
         <input type="submit" value="Sign Up" name="actionType"/>
 
     </form>
+    <%
+                           try {
+                               Boolean isError = (Boolean) request.getAttribute("isError");
+                               if (isError) {
+                                   out.println(request.getAttribute("error"));
+                               }
+                           } catch (NullPointerException ignored) {}
+                       %>
 
 
 </body>

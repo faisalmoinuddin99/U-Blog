@@ -41,8 +41,21 @@
 
        Logged In as <%= session.getAttribute("email") %>
         <br><br>
-       Email Id: <%= session.getAttribute("email") %>
-       Title: <%= session.getAttribute("bTitle") %>
+        <table>
+        <tr>
+       <td> Email Id: <%= session.getAttribute("email") %> </td>
+       </tr>
+       <tr>
+       <td> Title: <%= session.getAttribute("bTitle") %> </td>
+       </tr>
+       <tr>
+       <td> Tag: <%= session.getAttribute("bTag") %> </td>
+       </tr>
+      <tr>
+       <td>Description: <%= session.getAttribute("bDiscription") %> </td>
+       </tr>
+       </table>
+
 
     </body>
 </html>

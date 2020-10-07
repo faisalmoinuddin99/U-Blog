@@ -41,6 +41,7 @@ package com.upgrad.ublog.servlets;
  */
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,6 +54,7 @@ import java.io.IOException;
  *  thread2: Writing logs into the file
  */
 
+@WebServlet("/ublog/post")
 public class PostServlet extends HttpServlet {
 
 
@@ -66,7 +68,7 @@ public class PostServlet extends HttpServlet {
 
 
         switch (actionType) {
-            case "Sign In":
+            case "Post":
                 try {
 //                    accountService.login(account)
                     req.getSession().setAttribute("isLoggedIn", true);
@@ -74,7 +76,7 @@ public class PostServlet extends HttpServlet {
                     req.getSession().setAttribute("bTitle", title);
                     req.getSession().setAttribute("bTag", tag);
                     req.getSession().setAttribute("bDiscription", Description);
-                    req.getRequestDispatcher("/View.jsp").forward(req, res);
+                    req.getRequestDispatcher("/ublog/View.jsp").forward(req, res);
 
                 } catch (Exception e) {
                     req.setAttribute("isError", true);

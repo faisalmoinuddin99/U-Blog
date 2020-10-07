@@ -1,5 +1,9 @@
 package com.upgrad.ublog.utils;
 
+import com.upgrad.ublog.exceptions.EmailNotValidException;
+
+import java.util.regex.Pattern;
+
 /**
  * TODO: 5.1. Create a method with the following signature.
  *  public static boolean isValidEmail(String email) throws EmailNotValidException
@@ -12,7 +16,10 @@ package com.upgrad.ublog.utils;
  */
 
 public class EmailValidator {
-
+    public static  boolean isValidEmail(String email) throws EmailNotValidException {
+        String emailId = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+        return Pattern.matches(emailId, email);
+    }
 /*
     public static void main(String[] args) {
 		List<String> passingEmails = Arrays.asList(

@@ -26,6 +26,17 @@
 	        some spacing between them.
 -->
 
+<%
+    try {
+        Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
+        if (!isLoggedIn) {
+            response.sendRedirect("/index.jsp");
+        }
+    } catch (Exception ex) {
+        response.sendRedirect("/index.jsp");
+    }
+%>
+
 <html>
     <head>
         <title>Home Page</title>

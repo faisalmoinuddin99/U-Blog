@@ -2,6 +2,8 @@ package com.upgrad.ublog.utils;
 
 import com.upgrad.ublog.exceptions.EmailNotValidException;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -20,42 +22,47 @@ public class EmailValidator {
         String emailId = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
         return Pattern.matches(emailId, email);
     }
-/*
-    public static void main(String[] args) {
-		List<String> passingEmails = Arrays.asList(
-				"ish@so.com",
-				"a@b.com"
-			);
-		List<String> failingEmails = Arrays.asList(
 
-				"@.",
-				"%@xyz.com",
-				"a@b.c",
-				"a@b.correspondance",
-				"a@b",
-				"a.b"
-			);
-		System.out.println("All pass");
-		for (String email: passingEmails) {
-			System.out.print("checking " + email + " : ");
-			try {
-				EmailValidator.isValidEmail(email);
-				System.out.println("PASSED");
-			} catch (EmailNotValidException ex) {
-				System.out.println("FAILED");
-			}
-		}
+   public static void main(String[] args) {
 
-		System.out.println("All fails");
-		for (String email: failingEmails) {
-			System.out.print("checking " + email + " : ");
-			try {
-				EmailValidator.isValidEmail(email);
-				System.out.println("PASSED");
-			} catch (EmailNotValidException ex) {
-				System.out.println("FAILED");
-			}
-		}
-	}
-	*/
+       String email = "example@domain.com";
+       int index = email.indexOf('@');
+       email = email.substring(0,index);
+       System.out.println(email);
+//		List<String> passingEmails = Arrays.asList(
+//				"ish@so.com",
+//				"a@b.com"
+//			);
+//		List<String> failingEmails = Arrays.asList(
+//
+//				"@.",
+//				"%@xyz.com",
+//				"a@b.c",
+//				"a@b.correspondance",
+//				"a@b",
+//				"a.b"
+//			);
+//		System.out.println("All pass");
+//		for (String email: passingEmails) {
+//			System.out.print("checking " + email + " : ");
+//			try {
+//				EmailValidator.isValidEmail(email);
+//				System.out.println("PASSED");
+//			} catch (EmailNotValidException ex) {
+//				System.out.println("FAILED");
+//			}
+//		}
+//
+//		System.out.println("All fails");
+//		for (String email: failingEmails) {
+//			System.out.print("checking " + email + " : ");
+//			try {
+//				EmailValidator.isValidEmail(email);
+//				System.out.println("PASSED");
+//			} catch (EmailNotValidException ex) {
+//				System.out.println("FAILED");
+//			}
+//		}
+}
+
 }

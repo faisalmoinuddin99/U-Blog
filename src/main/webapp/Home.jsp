@@ -43,6 +43,9 @@
     </head>
 
     <body>
+
+
+                 <br><br>
        Logged In as <%= session.getAttribute("email") %>
         <br><br>
 

@@ -54,6 +54,11 @@
       <tr>
        <td>Description: <%= session.getAttribute("bDiscription") %> </td>
        </tr>
+       <tr>
+       <td>
+       <p>Time: <%= (new java.util.Date()).toLocaleString()%> </p>
+       </tr>
+       </td>
        </table>
 
 

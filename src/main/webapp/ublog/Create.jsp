@@ -43,6 +43,13 @@
     <form method="POST" action="/ublog/post">
         <table>
             <tr>
+
+
+               <td> Logged In as <%= session.getAttribute("email") %></td>
+            </tr>
+
+            <tr>
+
                  <td> User Email: <%= session.getAttribute("email") %></td>
             </tr>
             <tr>

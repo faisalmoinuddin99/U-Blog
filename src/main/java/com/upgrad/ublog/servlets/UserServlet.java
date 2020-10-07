@@ -76,6 +76,17 @@ public class UserServlet  extends HttpServlet {
         String actionType = req.getParameter("actionType");
         String emailID = req.getParameter("email");
         String password = req.getParameter("password");
+//        String email = "example@domain.com";
+
+        String name = emailID;
+        try{
+            int index = name.indexOf('@');
+            name = name.substring(0,index);
+        } catch (StringIndexOutOfBoundsException se) {
+            req.setAttribute("isError", true);
+        }
+
+
 
         switch (actionType){
             case "Sign In":
@@ -90,9 +101,11 @@ public class UserServlet  extends HttpServlet {
                         req.getRequestDispatcher("/index.jsp").forward(req,res);
                     }else{
                         req.getSession().setAttribute("isLoggedIn", true);
-                        req.getSession().setAttribute("email",emailID);
+                        req.getSession().setAttribute("email",name);
+
                         req.getRequestDispatcher("/Home.jsp").forward(req,res);
                     }
+
                 } catch (Exception e){
                     req.setAttribute("isError", true);
                 }
@@ -110,9 +123,12 @@ public class UserServlet  extends HttpServlet {
                         req.getRequestDispatcher("/index.jsp").forward(req,res);
                     }else{
                         req.getSession().setAttribute("isLoggedIn", true);
-                        req.getSession().setAttribute("email",emailID);
+                        req.getSession().setAttribute("email",name);
                         req.getRequestDispatcher("/Home.jsp").forward(req,res);
                     }
+
+                } catch (StringIndexOutOfBoundsException se){
+                    req.setAttribute("isError", true);
                 } catch (Exception e){
                     req.setAttribute("isError", true);
                 }

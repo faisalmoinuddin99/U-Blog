@@ -28,6 +28,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc6</artifactId>
+      <version>11.2.0.4</version>
+    </dependency>
+
+    <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>8.0.1</version>
@@ -81,7 +87,7 @@
           <artifactId>tomcat7-maven-plugin</artifactId>
           <version>2.2</version>
           <configuration>
-            <port>8080</port>
+            <port>8081</port>
             <path>/</path>
           </configuration>
         </plugin>

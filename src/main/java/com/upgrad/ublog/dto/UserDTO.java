@@ -57,6 +57,6 @@ public class UserDTO {
 		System.out.println(userDTO);
 
 		 //Your output should be similar to this.
-		 //UserDTO{userId=1, emailId='dummy@dummy.com', password='password'}
+//		 UserDTO{userId=1, emailId='dummy@dummy.com', password='password'}
 	}
 }

@@ -102,7 +102,6 @@ public class UserServlet  extends HttpServlet {
                     }else{
                         req.getSession().setAttribute("isLoggedIn", true);
                         req.getSession().setAttribute("email",name);
-
                         req.getRequestDispatcher("/Home.jsp").forward(req,res);
                     }
 

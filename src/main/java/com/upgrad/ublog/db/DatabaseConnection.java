@@ -1,5 +1,9 @@
 package com.upgrad.ublog.db;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * TODO 6.2: Implement the DatabaseConnection class using the Singleton Pattern (Hint. Should have the
  *  private no-arg constructor, a private static connection attribute of type Connection and a public
@@ -12,13 +16,33 @@ package com.upgrad.ublog.db;
  */
 
 public class DatabaseConnection {
+    private static Connection connection = null;
 
-    /*public static void main(String[] args) throws SQLException{
+    public static Connection getConnection () {
+        if (connection == null) {
+            String url = "jdbc:oracle:thin:@localhost:1521:xe";
+            String username = "FAISAL";
+            String password = "8692927930";
+
+            try {
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                connection = DriverManager.getConnection(url, username, password);
+            } catch (ClassNotFoundException e) {
+                System.out.println("Oracle Driver not found. Please download and add the driver.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return connection;
+    }
+
+    private DatabaseConnection() {}
+    public static void main(String[] args) throws SQLException{
         try {
         	DatabaseConnection.getConnection();
         	System.out.println("Connected");
         } catch (Exception e) {
         	System.out.println("Not Connected");
         }
-    }*/
+    }
 }

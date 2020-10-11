@@ -42,7 +42,8 @@ public class UserDAOImpl implements UserDAO  {
 			userDAO.create(temp);
 			System.out.println(userDAO.findByEmail("temp@temp.temp"));
 		} catch (Exception e) {
-			System.out.println("FAILED");
+		System.out.println("FAILED");
+//            e.getMessage();
 		}
 
 		 // Following should be the desired output of the main method.
@@ -58,8 +59,8 @@ public class UserDAOImpl implements UserDAO  {
 
         if ( resultSet != null && resultSet.next()) {
             UserDTO user = new UserDTO();
-            user.setUserId(resultSet.getInt("Id"));
-            user.setEmailId(resultSet.getString("email_id"));
+            user.setUserId(resultSet.getInt("id"));
+            user.setEmailId(resultSet.getString("emailId"));
             user.setPassword(resultSet.getString("password"));
 
             return user;
@@ -70,18 +71,17 @@ public class UserDAOImpl implements UserDAO  {
 
     @Override
     public UserDTO create(UserDTO userDTO) throws SQLException {
-//        Connection connection = DatabaseConnection.getConnection();
-//        Statement statement = connection.createStatement();
-//        String sql = "INSERT INTO UBLOG_USERS(email_id, password) VALUES (" +
-//                userDTO.getUserId() + ", '" +
-//                userDTO.getEmailId() + ", '" +
-//                userDTO.getPassword() + "', " +
-//                ")";
-//        statement.executeUpdate(sql);
-//        return userDTO;
-//    }
-        return null;
+        Connection connection = DatabaseConnection.getConnection();
+        Statement statement = connection.createStatement();
+        String sql = "INSERT INTO UBLOG_USERS ( email_id, password) VALUES (" +
+                userDTO.getEmailId() + ", '" +
+                userDTO.getPassword() + "', " +
+                ")";
+        statement.executeUpdate(sql);
+        return userDTO;
     }
+
+
 
 
 

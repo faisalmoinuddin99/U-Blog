@@ -27,6 +27,7 @@ public class DatabaseConnection {
             try {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
                 connection = DriverManager.getConnection(url, username, password);
+
             } catch (ClassNotFoundException e) {
                 System.out.println("Oracle Driver not found. Please download and add the driver.");
             } catch (SQLException e) {
